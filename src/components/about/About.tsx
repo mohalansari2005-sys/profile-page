@@ -1,0 +1,55 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+
+const highlights = ["React", "TypeScript", "Cloud", "Open Source"] as const;
+
+function About() {
+    return (
+        <section className="flex min-h-screen items-center justify-center px-4 py-16 md:py-24">
+            <div className="w-full max-w-2xl text-center">
+                {/* Name */}
+                <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                    Mohammed Al-Ansari
+                </h1>
+
+                {/* Headline */}
+                <p className="mt-4 text-lg text-muted-foreground sm:text-xl">
+                    Full-Stack Developer · Building Modern Web Experiences
+                </p>
+
+                <Separator className="mx-auto my-8 w-24" />
+
+                {/* Bio */}
+                <p className="mx-auto max-w-xl text-base leading-relaxed text-muted-foreground">
+                    I'm a developer passionate about crafting clean, performant web
+                    applications. I love turning complex problems into elegant solutions
+                    and am always exploring new technologies to expand my toolkit.
+                </p>
+
+                {/* Highlight Badges */}
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+                    {highlights.map((label) => (
+                        <Badge key={label} variant="secondary" className="text-sm">
+                            {label}
+                        </Badge>
+                    ))}
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <Button size="lg" asChild>
+                        <a href="mailto:hello@example.com">Get in Touch</a>
+                    </Button>
+                    <Button size="lg" variant="outline" asChild>
+                        <a href="#resume" target="_blank" rel="noopener noreferrer">
+                            View Resume
+                        </a>
+                    </Button>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default About;
