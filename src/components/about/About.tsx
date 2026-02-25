@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -13,6 +14,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Mail, Linkedin } from "lucide-react";
+import me from "@/assets/me.jpg";
 
 const highlights = [
     "Python",
@@ -27,16 +29,24 @@ function About() {
     return (
         <section className="flex min-h-screen items-center justify-center px-4 py-16 md:py-24">
             <Card className="w-full max-w-2xl border shadow-sm">
-                <CardHeader className="items-center text-center">
-                    {/* Name */}
-                    <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                        Mohammed Al-Ansari
-                    </h1>
+                <CardHeader className="flex flex-col items-center gap-4 text-center md:flex-row md:text-left">
+                    {/* Avatar */}
+                    <Avatar className="h-28 w-28 shrink-0 border-2 border-border shadow-md">
+                        <AvatarImage src={me} alt="Mohammed Al-Ansari" />
+                        <AvatarFallback>MA</AvatarFallback>
+                    </Avatar>
 
-                    {/* Headline */}
-                    <p className="mt-2 text-lg text-muted-foreground sm:text-xl">
-                        Product Engineer — Building AI-Powered Systems
-                    </p>
+                    <div>
+                        {/* Name */}
+                        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                            Mohammed Al-Ansari
+                        </h1>
+
+                        {/* Headline */}
+                        <p className="mt-2 text-lg text-muted-foreground sm:text-xl">
+                            Product Engineer — Building AI-Powered Systems
+                        </p>
+                    </div>
                 </CardHeader>
 
                 <CardContent className="flex flex-col items-center text-center">
