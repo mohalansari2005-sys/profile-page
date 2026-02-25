@@ -7,7 +7,14 @@ import {
     CardHeader,
 } from "@/components/ui/card";
 
-const highlights = ["React", "TypeScript", "Cloud", "Open Source"] as const;
+const highlights = [
+    "Python",
+    "SQL",
+    "Backend Development (FastAPI, REST APIs)",
+    "Data Validation & Structured Data Handling",
+    "AI-Enabled Development (LangChain)",
+    "Rapid Prototyping",
+] as const;
 
 function About() {
     return (
