@@ -21,7 +21,7 @@ function About() {
 
                     {/* Headline */}
                     <p className="mt-2 text-lg text-muted-foreground sm:text-xl">
-                        Full-Stack Developer · Building Modern Web Experiences
+                        Product Engineer — Building AI-Powered Systems
                     </p>
                 </CardHeader>
 
@@ -30,9 +30,15 @@ function About() {
 
                     {/* Bio */}
                     <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-                        I'm a developer passionate about crafting clean, performant web
-                        applications. I love turning complex problems into elegant solutions
-                        and am always exploring new technologies to expand my toolkit.
+                        Information Systems undergraduate with hands-on experience building
+                        backend systems, data pipelines, and AI-enabled applications.
+                        Skilled in Python-based backend development, API integrations,
+                        asynchronous processing, and database-driven systems. Experienced
+                        in rapid prototyping and translating business needs into technical
+                        solutions through structured requirement gathering and analysis.
+                        Demonstrates strong interest in data engineering and
+                        operationalizing AI solutions within real-world IT and product
+                        environments.
                     </p>
 
                     {/* Highlight Badges */}
