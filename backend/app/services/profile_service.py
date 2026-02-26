@@ -19,17 +19,6 @@ _DEFAULTS = {
 }
 
 
-def _compute_initials(name: str) -> str:
-    """Compute initials from name (first + last letters, uppercase; fallback first letter)."""
-    name = name.strip()
-    if not name:
-        return ""
-    parts = name.split()
-    if len(parts) >= 2:
-        return (parts[0][0] + parts[-1][0]).upper()
-    return name[0].upper()
-
-
 async def get_profile(db: AsyncSession) -> Profile:
     """Return the profile row, creating one with defaults if none exists."""
     result = await db.execute(select(Profile).limit(1))
@@ -41,7 +30,6 @@ async def get_profile(db: AsyncSession) -> Profile:
         await db.flush()
         await db.refresh(profile)
 
-    profile.initials = _compute_initials(profile.name)
     return profile
 
 
@@ -52,13 +40,13 @@ async def create_or_update_profile(
     """Upsert the single profile row with the provided data."""
     profile = await get_profile(db)
 
-    update_fields = data.model_dump(exclude_unset=True)
+    # Use by_alias=False (which is default) to ensure we write to 'avatar_url' instead of 'avatarUrl'
+    update_fields = data.model_dump(exclude_unset=True, by_alias=False)
     for field, value in update_fields.items():
         setattr(profile, field, value)
 
     await db.flush()
     await db.refresh(profile)
-    profile.initials = _compute_initials(profile.name)
     return profile
 
 
