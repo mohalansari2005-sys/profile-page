@@ -25,7 +25,7 @@ const MOCK_PROFILE: Profile = {
     name: "Mohammed Al-Ansari",
     initials: "MA",
     headline: "Product Engineer — Building AI-Powered Systems",
-    avatarUrl: "/src/assets/me.jpg",
+    avatarUrl: "/me.jpg",
     bio: "Information Systems undergraduate with hands-on experience building backend systems, data pipelines, and AI-enabled applications. Skilled in Python-based backend development, API integrations, asynchronous processing, and database-driven systems. Experienced in rapid prototyping and translating business needs into technical solutions through structured requirement gathering and analysis. Demonstrates strong interest in data engineering and operationalizing AI solutions within real-world IT and product environments.",
     skills: [
         "Python",
