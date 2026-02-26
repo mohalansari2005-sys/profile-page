@@ -46,3 +46,8 @@ async def create_or_update_profile(
     await db.flush()
     await db.refresh(profile)
     return profile
+
+
+async def update_profile(db: AsyncSession, data: ProfileUpdate) -> Profile:
+    """Update profile fields (admin use). Delegates to create_or_update."""
+    return await create_or_update_profile(db, data)

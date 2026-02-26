@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.routes.admin_profile import router as admin_profile_router
 from app.api.routes.profile import router as profile_router
 from app.core.config import settings
 
@@ -22,6 +23,7 @@ def create_app() -> FastAPI:
 
     # ── Routers ─────────────────────────────────────────────
     app.include_router(profile_router, prefix="/api/public", tags=["profile"])
+    app.include_router(admin_profile_router, prefix="/api/admin", tags=["admin"])
 
     # ── Health ──────────────────────────────────────────────
     @app.get("/health")

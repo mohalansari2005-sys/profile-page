@@ -16,6 +16,7 @@ class Settings(BaseSettings):
     ENV: str = "development"
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
     DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/portfolio"
+    ADMIN_TOKEN: str = "change_this_secret"
 
 
 settings = Settings()

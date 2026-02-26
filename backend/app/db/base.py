@@ -8,6 +8,3 @@ class Base(DeclarativeBase):
 
     pass
 
-
-# Import all models here so Alembic autogenerate can detect them.
-from app.models.profile import Profile  # noqa: E402, F401
