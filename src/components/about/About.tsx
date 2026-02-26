@@ -144,25 +144,28 @@ function HeroBlock({ profile }: { profile: Profile }) {
                 }}
                 className="flex flex-col items-center gap-4"
             >
-                <Avatar className="h-32 w-32 shrink-0 border-2 border-border shadow-md">
+                {/* Avatar with accent ring */}
+                <Avatar className="h-32 w-32 shrink-0 shadow-lg ring-2 ring-indigo-500/20 ring-offset-2 ring-offset-background">
                     <AvatarImage src={profile.avatarUrl} alt={profile.name} />
                     <AvatarFallback>{profile.initials}</AvatarFallback>
                 </Avatar>
 
+                {/* Name — accent gradient text */}
                 <motion.h1
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.7, ease: appleEase }}
-                    className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
+                    className="bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl"
                 >
                     {profile.name}
                 </motion.h1>
 
+                {/* Headline — slightly lighter */}
                 <motion.p
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.7, ease: appleEase }}
-                    className="text-lg text-muted-foreground sm:text-xl"
+                    className="text-lg font-medium text-muted-foreground/80 sm:text-xl"
                 >
                     {profile.headline}
                 </motion.p>
@@ -172,7 +175,7 @@ function HeroBlock({ profile }: { profile: Profile }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  About — bio paragraph, reveals on scroll                          */
+/*  About — bio paragraph, reveals on scroll (glass card)             */
 /* ------------------------------------------------------------------ */
 
 function AboutBlock({ bio }: { bio: string }) {
@@ -181,9 +184,9 @@ function AboutBlock({ bio }: { bio: string }) {
             className="flex flex-col items-center px-4 py-24 text-center"
             transition={{ duration: 0.8, ease: appleEase }}
         >
-            <Separator className="mb-8 w-24" />
+            <Separator className="mb-8 w-24 bg-indigo-500/20" />
 
-            <div className="max-w-xl rounded-2xl px-8 py-10">
+            <div className="glass-card max-w-xl rounded-2xl px-8 py-10">
                 <p className="text-base leading-relaxed text-muted-foreground">
                     {bio}
                 </p>
@@ -206,7 +209,10 @@ function SkillsBlock({ skills }: { skills: string[] }) {
             <div className="flex flex-wrap items-center justify-center gap-2">
                 {skills.map((label) => (
                     <StaggerItem key={label}>
-                        <Badge variant="secondary" className="text-sm">
+                        <Badge
+                            variant="secondary"
+                            className="border border-indigo-500/10 bg-indigo-500/5 text-sm text-foreground/80 backdrop-blur-sm"
+                        >
                             {label}
                         </Badge>
                     </StaggerItem>
@@ -233,7 +239,12 @@ function ContactBlock({ socials }: { socials: SocialLink[] }) {
                         <StaggerItem key={social.platform} offsetY={16}>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <Button variant="ghost" size="icon" asChild>
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        asChild
+                                        className="transition-colors hover:text-indigo-500"
+                                    >
                                         <a
                                             href={social.url}
                                             target={isExternal(social.url) ? "_blank" : undefined}
