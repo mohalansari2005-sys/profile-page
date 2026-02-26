@@ -15,7 +15,19 @@ _DEFAULTS = {
     "bio": "Edit this from admin later.",
     "avatar_url": "",
     "skills": [],
+    "socials": [],
 }
+
+
+def _compute_initials(name: str) -> str:
+    """Compute initials from name (first + last letters, uppercase; fallback first letter)."""
+    name = name.strip()
+    if not name:
+        return ""
+    parts = name.split()
+    if len(parts) >= 2:
+        return (parts[0][0] + parts[-1][0]).upper()
+    return name[0].upper()
 
 
 async def get_profile(db: AsyncSession) -> Profile:
@@ -29,6 +41,7 @@ async def get_profile(db: AsyncSession) -> Profile:
         await db.flush()
         await db.refresh(profile)
 
+    profile.initials = _compute_initials(profile.name)
     return profile
 
 
@@ -45,6 +58,7 @@ async def create_or_update_profile(
 
     await db.flush()
     await db.refresh(profile)
+    profile.initials = _compute_initials(profile.name)
     return profile
 
 
