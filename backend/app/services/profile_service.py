@@ -15,6 +15,7 @@ _DEFAULTS = {
     "bio": "Edit this from admin later.",
     "avatar_url": "",
     "skills": [],
+    "socials": [],
 }
 
 
@@ -39,7 +40,8 @@ async def create_or_update_profile(
     """Upsert the single profile row with the provided data."""
     profile = await get_profile(db)
 
-    update_fields = data.model_dump(exclude_unset=True)
+    # Use by_alias=False (which is default) to ensure we write to 'avatar_url' instead of 'avatarUrl'
+    update_fields = data.model_dump(exclude_unset=True, by_alias=False)
     for field, value in update_fields.items():
         setattr(profile, field, value)
 
