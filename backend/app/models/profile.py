@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from sqlalchemy import JSON, DateTime, Integer, String, Text, func
+from sqlalchemy import JSON, DateTime, Integer, String, Text, func, text
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -21,6 +22,9 @@ class Profile(Base):
     bio: Mapped[str] = mapped_column(Text, nullable=False)
     avatar_url: Mapped[str] = mapped_column(String(500), nullable=False, default="")
     skills: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    socials: Mapped[list[dict]] = mapped_column(
+        JSONB, nullable=False, default=list, server_default=text("'[]'::jsonb"),
+    )
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
