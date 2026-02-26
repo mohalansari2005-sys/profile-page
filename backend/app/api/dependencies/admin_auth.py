@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import secrets
+
 from fastapi import Header, HTTPException, status
 
 from app.core.config import settings
@@ -15,7 +17,7 @@ async def verify_admin_token(
     Raises:
         HTTPException: 401 if the token is missing or invalid.
     """
-    if x_admin_token != settings.ADMIN_TOKEN:
+    if not secrets.compare_digest(x_admin_token, settings.ADMIN_TOKEN):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid or missing admin token",
