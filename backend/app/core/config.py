@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     APP_NAME: str = "Profile Page API"
     ENV: str = "development"
     CORS_ORIGINS: list[str] = ["http://localhost:5173"]
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/portfolio"
 
 
 settings = Settings()
